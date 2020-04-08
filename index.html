@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Technique</title>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1>Make your time efficient</h1>
+        <div class="clock-group">
+            <div id="workTime">
+                <span class="details">WORK</span>
+                <i class="fa fa-caret-up button" id="workTime-up"></i>
+                <span class="workTime-clock">
+                    <p class="clock" id="workTime-minute">25</p>
+                    <p class="clock" >:</p>
+                    <p class="clock" id="workTime-second">00</p>
+                </span>
+                <i class="fa fa-caret-down button" id="workTime-down"></i>
+            </div>
+            <div id="rest-time">
+                <span class="details">REST</span>
+                <i class="fa fa-caret-up button"  id="rest-time-up"></i>
+                <span class="workTime-clock">
+                    <p class="clock" id="rest-time-minute">5</p>
+                    <p class="clock" >:</p>
+                    <p class="clock" id="rest-time-second">00</p>
+                </span>
+                <i class="fa fa-caret-down button"  id="rest-time-down"></i>
+            </div>
+        </div>
+
+        <span class="action" id="action">START</span>
+
+        <div class="controllers">
+            <i class="fa fa-play button" id="controller-play"></i>
+            <i class="fa fa-pause button" id="controller-pause"></i>
+            <i class="fa fa-stop button" id="controller-break"></i>
+        </div>
+
+        <script src="app.js" charset="utf-8"></script>
+    </body>
+</html>

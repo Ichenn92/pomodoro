@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;700&family=Pathway+Gothic+One&display=swap');
+
+/* font-family: 'Pathway Gothic One', sans-serif; */
+/* font-family: 'Baloo Tamma 2', cursive; */
+
+* {
+    font-family: 'Pathway Gothic One', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background-color: #363946;
+    color: #B1B6A6;
+}
+
+h1 {
+    font-family: 'Baloo Tamma 2', cursive;
+    margin: 50px;
+    font-size: 30px;
+}
+
+.clock {
+    display: inline-block;
+}
+
+.clock-group {
+    display: flex;
+    justify-content: center;
+}
+.clock-group div {
+    margin: 0 30px;
+    font-size: 60px;
+}
+
+#workTime {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+#rest-time {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.controllers i {
+    margin: 40px 30px;
+    font-size: 40px;
+}
+
+.button:hover {
+    color: #696773;
+    transition: .4s;
+}
+
+.action {
+    font-size: 80px;
+    color: #B66773;
+}
+
+.details {
+    font-size: 40px;
+    color: #819595;
+}
