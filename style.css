@@ -61,6 +61,12 @@ h1 {
     font-size: 80px;
     color: #B66773;
 }
+#action {
+    display: block;
+}
+#action-hover {
+    display: none;
+}
 
 .details {
     font-size: 40px;

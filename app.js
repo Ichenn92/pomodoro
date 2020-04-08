@@ -1,6 +1,6 @@
 let intervalID;
-let workTimeMinute = 25;
-let workTimeSecond = 00;
+let workTimeMinute = 0;
+let workTimeSecond = 30;
 let restTimeMinute = 5;
 let restTimeSecond = 00;
 let workTimeMinuteCustom;
@@ -21,12 +21,16 @@ const workTimeMinute_p = document.getElementById("workTime-minute");
 const workTimeSecond_p = document.getElementById("workTime-second");
 const restTimeMinute_p = document.getElementById("rest-time-minute");
 const restTimeSecond_p = document.getElementById("rest-time-second");
+const audioTimeToChill = new Audio('asset/legend-of-zelda.mp3');
+const audioTimeToWork = new Audio('asset/here-we-go.mp3');
+const audioGivingUp = new Audio('asset/nani.mp3');
 
 // Controllers
 const play_i = document.getElementById("controller-play");
 const pause_i = document.getElementById("controller-pause");
 const break_i = document.getElementById("controller-break");
 const action_span = document.getElementById("action");
+const actionHover_span = document.getElementById("action-hover");
 
 // Trigger which clock is currently ON
 const workTimeClock_span = document.getElementsByClassName("workTime-clock");
@@ -90,6 +94,10 @@ function countDown(){
             displayRestTime(restTimeMinute, restTimeSecond);
         }
     }
+
+    if (workTimeIsOn && workTimeMinute == 0 && workTimeSecond == 10) {
+        audioTimeToChill.play();
+    }
     
     if(workTimeMinute == 0 && workTimeSecond == 0) {
         workTimeIsOn = false;
@@ -97,14 +105,15 @@ function countDown(){
         workTimeMinute = workTimeMinuteCustom;
         workTimeSecond = workTimeSecondCustom;
         displayWorkTime(workTimeMinute, workTimeSecond);
-        action_span.innerHTML = "CHILLING";
+        action_span.innerHTML = "CHILLING...";
     } else if (restTimeMinute == 0 && restTimeSecond == 0) {
+        audioTimeToWork.play();
         workTimeIsOn = true;
         restTimeIsOn = false;
         restTimeMinute = restTimeMinuteCustom;
         restTimeSecond = restTimeSecondCustom;
         displayRestTime(restTimeMinute, restTimeSecond);
-        action_span.innerHTML = "WORKING";
+        action_span.innerHTML = "WORKING...";
     }
 }
 
@@ -137,6 +146,7 @@ function displayRestTime(minute, second){
 // Controller functions --------------------------------
 function play() {
     if (!alreadyPlayed) {
+        audioTimeToWork.play();
         workTimeMinuteCustom = workTimeMinute;
         workTimeSecondCustom = workTimeSecond;
         restTimeSecondCustom = restTimeSecond;
@@ -158,6 +168,7 @@ function breakTime() {
         clearInterval(intervalID);
     }
         alreadyPlayed = false;
+        audioGivingUp.play();
         workTimeMinute = 25;
         workTimeSecond = 00;
         restTimeMinute = 5;
@@ -170,19 +181,22 @@ function breakTime() {
 function main() {
     play_i.addEventListener('click', function() {
         if(!alreadyPlayed)
-            action_span.innerHTML = "WORKING";
+            action_span.innerHTML = "WORKING...";
         
         if (!isPlaying) {
             play_i.classList.replace("fa-play", "fa-pause");
+            action_span.innerHTML = "WORKING...";
             isPlaying = true;
             play();
         } else {
             play_i.classList.replace("fa-pause", "fa-play");
+            action_span.innerHTML = "PAUSING...";
             isPlaying = false;
             pause();
         }
     })
     break_i.addEventListener("click", function() {
+        play_i.classList.replace("fa-pause", "fa-play");
         action_span.innerHTML = "START";
         breakTime();
     })
@@ -203,6 +217,33 @@ function main() {
     restTimeDown_i.addEventListener("click", function () {
         restTimeDown();
         console.log(restTimeMinute);
+    })
+
+    play_i.addEventListener('mouseover', function () {
+        action_span.style.display = 'none';
+        actionHover_span.style.display = 'block';
+        if (!alreadyPlayed) {
+            actionHover_span.innerHTML = "START";
+        } else if (isPlaying) {
+            actionHover_span.innerHTML = "PAUSE";
+        } else {
+            actionHover_span.innerHTML = "CONTINUE";
+        }
+    })
+    play_i.addEventListener('mouseleave', function () {
+        action_span.style.display = 'block';
+        actionHover_span.style.display = 'none';
+    })
+    break_i.addEventListener('mouseover', function () {
+        if (!alreadyPlayed)
+            return;
+        action_span.style.display = 'none';
+        actionHover_span.style.display = 'block';
+        actionHover_span.innerHTML = "GIVE UP";
+    })
+    break_i.addEventListener('mouseleave', function () {
+        action_span.style.display = 'block';
+        actionHover_span.style.display = 'none';
     })
 }
 
