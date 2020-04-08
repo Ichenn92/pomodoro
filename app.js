@@ -10,6 +10,7 @@ let restTimeSecondCustom;
 let workTimeIsOn = true;
 let restTimeIsOn = false;
 let alreadyPlayed = false;
+let isPlaying = false;
 
 // Time modifier on clock
 const workTimeUp_i = document.getElementById("workTime-up");
@@ -144,7 +145,7 @@ function play() {
     }
     intervalID = window.setInterval(function setTimer(){
         countDown();
-      }, 10);
+      }, 1000);
 }
 
 function pause() {
@@ -168,12 +169,18 @@ function breakTime() {
 // DOM functions -----------------------------------------
 function main() {
     play_i.addEventListener('click', function() {
-        if(!alreadyPlayed) {}
+        if(!alreadyPlayed)
             action_span.innerHTML = "WORKING";
-        play();
-    })
-    pause_i.addEventListener("click", function() {
-        pause();
+        
+        if (!isPlaying) {
+            play_i.classList.replace("fa-play", "fa-pause");
+            isPlaying = true;
+            play();
+        } else {
+            play_i.classList.replace("fa-pause", "fa-play");
+            isPlaying = false;
+            pause();
+        }
     })
     break_i.addEventListener("click", function() {
         action_span.innerHTML = "START";

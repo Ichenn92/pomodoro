@@ -57,6 +57,7 @@ h1 {
 }
 
 .action {
+    height: 90px;
     font-size: 80px;
     color: #B66773;
 }
