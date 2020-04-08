@@ -1,6 +1,6 @@
 let intervalID;
 let workTimeMinute = 0;
-let workTimeSecond = 30;
+let workTimeSecond = 12;
 let restTimeMinute = 5;
 let restTimeSecond = 00;
 let workTimeMinuteCustom;
