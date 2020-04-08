@@ -19,7 +19,7 @@ body {
 h1 {
     font-family: 'Baloo Tamma 2', cursive;
     margin: 30px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .clock {
@@ -34,20 +34,23 @@ h1 {
     margin: 0 30px;
     font-size: 60px;
 }
+.arrow {
+    font-size: 40px;
+}
 
 #workTime {
-    width: 150px;
+    width: 125px;
     display: flex;
     flex-direction: column;
 }
 #rest-time {
-    width: 150px;
+    width: 125px;
     display: flex;
     flex-direction: column;
 }
 
 .controllers i {
-    margin: 40px 30px;
+    margin: 20px 30px;
     font-size: 40px;
 }
 
@@ -57,8 +60,9 @@ h1 {
 }
 
 .action {
-    height: 90px;
-    font-size: 80px;
+    height: 70px;
+    padding: 20px 0;
+    font-size: 30px;
     color: #B66773;
 }
 #action {
